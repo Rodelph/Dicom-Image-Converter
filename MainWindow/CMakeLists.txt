@@ -5,14 +5,14 @@ add_library(
             src/MainWindow/header/mainwindow.h
             )            
 
-target_include_directories(ImageProc PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src")
+target_include_directories(MainWindow PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src")
 
 find_package(Qt5 COMPONENTS Widgets Core Gui REQUIRED)
 
 if(${Qt5_FOUND})
-    message("Found Qt version : " ${Qt5_VERSION} " for ImageProc folder !")
+    message("Found Qt version : " ${Qt5_VERSION} " for MainWindow folder !")
     target_link_libraries(MainWindow  Qt5::Widgets Qt5::Core Qt5::Gui)
-    message("Linked Qt version : " ${Qt5_VERSION} " for ImageProc folder !")
+    message("Linked Qt version : " ${Qt5_VERSION} " for MainWindow folder !")
 elseif(!${Qt5_FOUND})
     message("Coudn't find a Qt installation on this computer !")
 endif()

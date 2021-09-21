@@ -10,3 +10,12 @@ MainWindow::MainWindow(QWidget *parent) :   QMainWindow(parent),
 MainWindow::~MainWindow() { delete ui; }
 
 
+
+void MainWindow::on_procBtn_clicked()
+{
+    this->setAttribute(Qt::WA_QuitOnClose);
+    this->close();
+    imgproc img;
+    img.setModal(true);
+    img.exec();
+}

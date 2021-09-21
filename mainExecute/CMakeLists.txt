@@ -1,6 +1,3 @@
-find_package(DCMTK REQUIRED)
-find_package(OpenCV REQUIRED)
-find_package(Boost REQUIRED)
 find_package(Qt5 COMPONENTS Widgets Core Gui REQUIRED)
 
 add_test(Tester tesdcm)
@@ -11,5 +8,5 @@ include(CPack)
 
 add_executable(tesdcm main.cpp)
 
-target_link_libraries(tesdcm PRIVATE ImageProc)
 target_link_libraries(tesdcm PRIVATE MainWindow)
+target_link_libraries(tesdcm PRIVATE ImageProc)

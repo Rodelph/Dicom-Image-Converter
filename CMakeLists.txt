@@ -20,9 +20,9 @@ set(CMAKE_AUTORCC ON)
 
 include(CTest)
 
-add_subdirectory(ImageProc)
-
 add_subdirectory(MainWindow)
+
+add_subdirectory(ImageProc)
 
 add_subdirectory(mainExecute)
 

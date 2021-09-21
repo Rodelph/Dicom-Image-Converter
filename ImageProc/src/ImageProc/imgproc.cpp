@@ -1,47 +1,22 @@
-#include "header/imgproc.hpp"
+#include "./header/imgproc.h"
+#include "ui_imgproc.h"
 
-imageproc::imageproc() { convertDcmToPng(path); }
-
-imageproc::~imageproc() { delete path; }
-
-void imageproc::convertDcmToPng(char* imageToConv)
+imgproc::imgproc(QWidget *parent) : QDialog(parent),
+                                    ui(new Ui::imgproc)
 {
-    afile = "...\\**.dcm";
-    result = dfile.loadFile(imageToConv);
+    ui->setupUi(this);
+}
 
-    if (result.bad()) { std::cout << "Error when loading !!\n";}
+imgproc::~imgproc() { delete ui; }
 
-    data = dfile.getDataset();
-
-    Metalnfo = dfile.getMetaInfo();
-
-    tag = Metalnfo->getTag();
-
-    element = NULL;
-
-    result = data->findAndGetElement(DCM_PixelData, element);
-
-    if (result.bad()) { std::cout << "Error when finding element !!\n";}
-
-    imageDcm = new DicomImage(imageToConv);
-    nRows = imageDcm->getHeight();
-    nCols = imageDcm->getWidth();
-    nImgs = imageDcm->getFrameCount();
-
-    data_Len = data->getLength();
-    element_Len = element->getLength();
-
-    data->findAndGetOFString(DCM_PatientName, patientName);
-    Uint16* pixData16;
-    result = element->getUint16Array(pixData16);
-
-    std::cout << "data_len " << data_Len << std::endl;
-    std::cout << "elemetn_len " << element_Len << std::endl;
-
-    for (int i = 0; i < 512*512; i++)
-        *(pixData16 + i) *= 20; //  Grayscale stretch
-    cv::Mat imag = cv::Mat(512, 512, CV_16U, pixData16);
-    cv::imshow("image", imag);
+void imgproc::on_testBtn_clicked()
+{
+    DicomImage *image = new DicomImage("../../res/1.dcm");
+    image->setMinMaxWindow();
+    cv::Mat dst;
+    cv::Mat inputImage(uint16_t(image->getHeight()), uint16_t(image->getWidth()), CV_16UC1, (uint16_t*)image->getOutputData(16));
+    cv::medianBlur(inputImage, dst, 3);
+    cv::imshow("image", dst);
     cv::waitKey();
     cv::destroyAllWindows();
 }

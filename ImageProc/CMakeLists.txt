@@ -1,14 +1,12 @@
 add_library(
             ImageProc
             src/ImageProc/imgproc.cpp
-            src/ImageProc/header/imgproc.hpp
+            src/ImageProc/imgproc.ui
+            src/ImageProc/header/imgproc.h
             )            
 
 target_include_directories(ImageProc PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src")
 
-find_package(DCMTK REQUIRED)
-find_package(OpenCV REQUIRED)
-find_package(Boost REQUIRED)
 find_package(Qt5 COMPONENTS Widgets Core Gui REQUIRED)
 
 if(${Qt5_FOUND})
@@ -19,23 +17,30 @@ elseif(!${Qt5_FOUND})
     message("Coudn't find a Qt installation on this computer !")
 endif()
 
+find_package(DCMTK REQUIRED)
+
 if(${DCMTK_FOUND})
     message("Found DCMTK version : " ${DCMTK_VERSION} " for ImageProc folder !")
-    include_directories(${DCMTK_INCLUDE_DIRS})
-    target_link_libraries(ImageProc ${DCMTK_LIBS})
+    include_directories(${DCMTK_DIRS})
+    target_link_libraries(ImageProc ${DCMTK_LIBRARIES})
     message("Linked DCMTK version : " ${DCMTK_VERSION} " for ImageProc folder !")
 elseif(!${DCMTK_FOUND})
     message("Coudn't find a DCMTK installation on this computer !")
 endif()
 
+
+find_package(Boost REQUIRED)
+
 if(${Boost_FOUND})
     message("Found Boost version : " ${Boost_VERSION} " for ImageProc folder !")
     include_directories( ${Boost_INCLUDE_DIR} )
-    target_link_libraries(ImageProc LINK_PUBLIC ${Boost_LIBRARIES} )
+    target_link_libraries(ImageProc ${Boost_LIBRARIES} )
     message("Linked Boost version : " ${Boost_VERSION} " for ImageProc folder !")
 elseif(!${Boost_FOUND})
     message("Couldn't find a Boost installation on this computer !")
 endif()
+
+find_package(OpenCV REQUIRED)
 
 if(${OpenCV_FOUND})
     message("Found Opencv version :" ${OpenCV_VERSION} " for ImageProc folder !")

@@ -9,7 +9,7 @@ imgproc::imgproc(QWidget *parent) : QDialog(parent),
 
 imgproc::~imgproc() { delete ui; }
 
-void imgproc::on_testBtn_clicked()
+void imgproc::on_convBtn_clicked()
 {
     DicomImage *image = new DicomImage("../../resDcm/1-002.dcm");
     image->setMinMaxWindow();

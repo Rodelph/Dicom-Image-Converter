@@ -24,10 +24,8 @@ public:
     explicit imgproc(QWidget *parent = nullptr);
     ~imgproc();
 
-    void convertDcmToPng();
-
 private slots:
-    void on_testBtn_clicked();
+    void on_convBtn_clicked();
 
 private:
     Ui::imgproc *ui;

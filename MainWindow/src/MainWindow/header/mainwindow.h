@@ -1,17 +1,15 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
-#include <QMessageBox>
-#include <QFileDialog>
-#include <QErrorMessage>
-
 #include "dcmtk/config/osconfig.h"
 #include "dcmtk/dcmdata/dctk.h"
 #include "dcmtk/dcmimgle/dcmimage.h"
 #include <opencv2/opencv.hpp>
 
-#include <boost/align.hpp>
+#include <QMainWindow>
+#include <QMessageBox>
+#include <QFileDialog>
+#include <QErrorMessage>
 
 #include <iostream>
 
@@ -38,9 +36,7 @@ class MainWindow : public QMainWindow
         int width, height;
         const char* path = "resAppPng/app.png";
         QMessageBox msgBox;
-        const QString _details = tr("This project can transform .dcm files to any other image format"
-                                    "and then manipulate theses images for you need !!"
-                                    );
+        const QString _details = tr("This project can transform .dcm files to .png format !" );
         std::string nameFile;
         const QString _versionDetails = tr( "Dicom Image Converter <br>" "Version 0.0.1 <br>" );
 

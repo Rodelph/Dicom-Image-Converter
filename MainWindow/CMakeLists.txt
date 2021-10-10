@@ -28,17 +28,6 @@ elseif(!${DCMTK_FOUND})
     message("Coudn't find a DCMTK installation on this computer !")
 endif()
 
-find_package(Boost REQUIRED)
-
-if(${Boost_FOUND})
-    message("Found Boost version : " ${Boost_VERSION} " for MainWindow folder !")
-    include_directories( ${Boost_INCLUDE_DIR} )
-    target_link_libraries(MainWindow ${Boost_LIBRARIES} )
-    message("Linked Boost version : " ${Boost_VERSION} " for MainWindow folder !")
-elseif(!${Boost_FOUND})
-    message("Couldn't find a Boost installation on this computer !")
-endif()
-
 find_package(OpenCV REQUIRED)
 
 if(${OpenCV_FOUND})

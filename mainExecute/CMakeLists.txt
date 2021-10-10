@@ -9,4 +9,3 @@ include(CPack)
 add_executable(tesdcm main.cpp)
 
 target_link_libraries(tesdcm PRIVATE MainWindow)
-target_link_libraries(tesdcm PRIVATE ImageProc)

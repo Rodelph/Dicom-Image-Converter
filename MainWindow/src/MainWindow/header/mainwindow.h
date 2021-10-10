@@ -3,7 +3,17 @@
 
 #include <QMainWindow>
 #include <QMessageBox>
-#include "../../../../ImageProc/src/ImageProc/header/imgproc.h"
+#include <QFileDialog>
+#include <QErrorMessage>
+
+#include "dcmtk/config/osconfig.h"
+#include "dcmtk/dcmdata/dctk.h"
+#include "dcmtk/dcmimgle/dcmimage.h"
+#include <opencv2/opencv.hpp>
+
+#include <boost/align.hpp>
+
+#include <iostream>
 
 namespace Ui { class MainWindow; }
 
@@ -11,29 +21,31 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
-public:
-    explicit MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    public:
 
-private slots:
-    void on_actionProgram_version_triggered();
-    void on_procBtn_clicked();
-    void on_actionAbout_us_triggered();
+        explicit MainWindow(QWidget *parent = nullptr);
+        ~MainWindow();
 
-private:
-    Ui::MainWindow *ui;
-    int width, height;
-    const char* path = "../../resPng/1-001.png";
+    private slots:
 
-    const QString _details = tr(
-        "This project can transform .dcm files to any other image format"
-        "and then manipulate theses images for you need !!"
-    );
+        void on_actionProgram_version_triggered();
+        void on_procBtn_clicked();
+        void on_actionAbout_us_triggered(); 
 
-    const QString _versionDetails = tr(
-        "Dicom Image Converter "
-        "Version 0.0.1 <br>"
-    );
+    private:
+   
+        Ui::MainWindow *ui;
+        int width, height;
+        const char* path = "resAppPng/app.png";
+        QMessageBox msgBox;
+        const QString _details = tr("This project can transform .dcm files to any other image format"
+                                    "and then manipulate theses images for you need !!"
+                                    );
+        std::string nameFile;
+        const QString _versionDetails = tr( "Dicom Image Converter <br>" "Version 0.0.1 <br>" );
+
+        QErrorMessage *msgEr;
+        const QString pathToDcm = "../../resDcm";
 };
 
 #endif // MAINWINDOW_H

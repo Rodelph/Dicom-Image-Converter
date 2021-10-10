@@ -83,54 +83,24 @@
               </widget>
              </item>
              <item alignment="Qt::AlignHCenter">
-              <widget class="QPushButton" name="pushButton">
-               <property name="maximumSize">
+              <widget class="QLineEdit" name="lineEdit">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
                 <size>
-                 <width>300</width>
+                 <width>400</width>
                  <height>30</height>
                 </size>
                </property>
-               <property name="text">
-                <string>PushButton</string>
-               </property>
-              </widget>
-             </item>
-             <item alignment="Qt::AlignHCenter">
-              <widget class="QPushButton" name="pushButton_2">
                <property name="maximumSize">
                 <size>
-                 <width>300</width>
+                 <width>400</width>
                  <height>30</height>
                 </size>
-               </property>
-               <property name="text">
-                <string>PushButton</string>
-               </property>
-              </widget>
-             </item>
-             <item alignment="Qt::AlignHCenter">
-              <widget class="QPushButton" name="pushButton_4">
-               <property name="maximumSize">
-                <size>
-                 <width>300</width>
-                 <height>30</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>PushButton</string>
-               </property>
-              </widget>
-             </item>
-             <item alignment="Qt::AlignHCenter">
-              <widget class="QPushButton" name="pushButton_3">
-               <property name="maximumSize">
-                <size>
-                 <width>300</width>
-                 <height>30</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>PushButton</string>
                </property>
               </widget>
              </item>

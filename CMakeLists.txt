@@ -22,8 +22,6 @@ include(CTest)
 
 add_subdirectory(MainWindow)
 
-add_subdirectory(ImageProc)
-
 add_subdirectory(mainExecute)
 
 enable_testing()

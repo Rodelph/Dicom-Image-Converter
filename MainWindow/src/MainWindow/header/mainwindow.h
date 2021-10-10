@@ -34,7 +34,7 @@ class MainWindow : public QMainWindow
    
         Ui::MainWindow *ui;
         int width, height;
-        const char* path = "resAppPng/app.png";
+        const char* path = "../../resAppPng/app.png";
         QMessageBox msgBox;
         const QString _details = tr("This project can transform .dcm files to .png format !" );
         std::string nameFile;

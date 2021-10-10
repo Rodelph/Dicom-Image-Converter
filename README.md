@@ -17,7 +17,11 @@ Please make sure that you have :
  - Qt (I used 5.12)
  
  installed on the computer and configured to be detected when building the project. (If you use windows make sure to configure your 
- libraries directories and binaries directories in your environment variable path to make things easy for you !!)
+ libraries directories and binaries directories in your environment variable path to make things easy for you !!).
+ 
+ Please create a build file next to the other folders, and build the project there. After that make the project in the 
+ mainExecute folder that is going to be created, to create the executable file.
+ 
 <p align="center">
  
 *******************************************************************************************************************

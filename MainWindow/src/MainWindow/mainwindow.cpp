@@ -41,10 +41,9 @@ void MainWindow::on_procBtn_clicked()
     }
     else 
     {
-        cv::medianBlur(inputImage, dst, 3);
-        cv::imshow("image", dst);
+        cv::imshow("image", inputImage);
     }
-    
+
     msgBox.setText("Selecting the file to convert.");
     msgBox.setInformativeText("Do you want to save your changes ?");
     msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Cancel);
@@ -53,7 +52,7 @@ void MainWindow::on_procBtn_clicked()
     switch (ret) 
     {
        case QMessageBox::Save:         
-           cv::imwrite("../../resPng/" + nameFile + ".png", dst);
+           cv::imwrite("../../resPng/" + nameFile + ".png", inputImage);
            cv::waitKey();
            cv::destroyAllWindows();
            break;
@@ -78,4 +77,3 @@ void MainWindow::on_actionProgram_version_triggered()
                             this->_versionDetails
                             );
 }
-

@@ -33,8 +33,17 @@ void MainWindow::on_procBtn_clicked()
     image->setMinMaxWindow();
     cv::Mat dst;
     cv::Mat inputImage(uint16_t(image->getHeight()), uint16_t(image->getWidth()), CV_16UC1, (uint16_t*)image->getOutputData(16));
-    cv::medianBlur(inputImage, dst, 3);
-    cv::imshow("image", dst);
+    if (inputImage.empty() == true)
+    {
+        msgEr = new QErrorMessage(this);
+        msgEr->showMessage("You did not select an image !");
+        return;
+    }
+    else 
+    {
+        cv::medianBlur(inputImage, dst, 3);
+        cv::imshow("image", dst);
+    }
     
     msgBox.setText("Selecting the file to convert.");
     msgBox.setInformativeText("Do you want to save your changes ?");
